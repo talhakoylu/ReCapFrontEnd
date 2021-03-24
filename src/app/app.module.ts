@@ -28,7 +28,17 @@ import { PaymentPageComponent } from './pages/payment-page/payment-page.componen
 import { ToastrModule } from 'ngx-toastr';
 import { RentCarComponent } from './components/rent-car/rent-car.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { AddPageComponent } from './pages/add-page/add-page.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
 
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +61,14 @@ import { PaymentComponent } from './components/payment/payment.component';
     CarFilterComponent,
     RentCarComponent,
     PaymentComponent,
-    PaymentPageComponent
+    PaymentPageComponent,
+    CarAddComponent,
+    AddPageComponent,
+    ColorAddComponent,
+    BrandAddComponent,
+    CarUpdateComponent,
+    ColorUpdateComponent,
+    BrandUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -64,9 +81,15 @@ import { PaymentComponent } from './components/payment/payment.component';
       closeButton: true
     }),
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas);
+    library.addIconPacks(far);
+  }
+}

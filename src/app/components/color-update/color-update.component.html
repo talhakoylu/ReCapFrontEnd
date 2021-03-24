@@ -1,0 +1,26 @@
+<div class="container mt-3 content">
+    <div class="col-lg">
+        <div class="card">
+            <div class="card-header">
+                <h4>Update the Color</h4>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="colorUpdateForm">
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <label for="colorNameInput" class="form-label">Color Name:</label>
+                        </div>
+                        <div class="col-lg">
+                            <input type="text" class="form-control" id="colorNameInput" formControlName="colorName" placeholder="e.g. Blue">                          
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-warning" (click)="updateColor()" type="button">Update</button>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

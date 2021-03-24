@@ -2,10 +2,14 @@
     <div class="spinner-grow text-info" role="status" aria-hidden="true"></div>
 </div>
 <div class="my-1">
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterTextColorInput" placeholder="Renk giriniz...">
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterTextColorInput"
+        placeholder="Renk giriniz...">
 </div>
-<li [class] = "getAllColorClass()" routerLink = "/cars">Tüm Araçlar</li>
+<li [class]="getAllColorClass()" routerLink="/cars">Tüm Araçlar</li>
 <ul *ngIf="dataLoaded==true" class="list-group">
-    <li (click)="setCurrentColor(color)" *ngFor="let color of colors | filterColor:filterText" 
-    [class]="getCurrentColorClass(color)" routerLink = "/cars/color/{{color.colorId}}">{{color.colorName}}</li>
+    <li (click)="setCurrentColor(color)" *ngFor="let color of colors | filterColor:filterText"
+        [class]="getCurrentColorClass(color)" routerLink="/cars/color/{{color.colorId}}" style="cursor: pointer;">{{color.colorName}}
+        <fa-icon [icon]="['far', 'edit']" style="float: right;" routerLink="/update/color/{{color.colorId}}"></fa-icon>
+    </li>
+
 </ul>
