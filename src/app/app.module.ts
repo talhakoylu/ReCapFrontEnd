@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -39,6 +39,11 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { SimpleLayoutComponent } from './components/_layout/simple-layout/simple-layout.component';
+import { MembershipPageComponent } from './pages/membership-page/membership-page.component';
+import { LoginComponent } from './components/account-components/login/login.component';
+import { RegisterComponent } from './components/account-components/register/register.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -68,7 +73,11 @@ import { BrandUpdateComponent } from './components/brand-update/brand-update.com
     BrandAddComponent,
     CarUpdateComponent,
     ColorUpdateComponent,
-    BrandUpdateComponent
+    BrandUpdateComponent,
+    SimpleLayoutComponent,
+    MembershipPageComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +93,9 @@ import { BrandUpdateComponent } from './components/brand-update/brand-update.com
     ReactiveFormsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

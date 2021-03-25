@@ -1,0 +1,48 @@
+@media only screen and (min-width: 991px) {
+	.login-area {
+		height: 100%;
+		width: 60%;
+	}
+	.login-image {
+		background-image: url("../../../../assets/images/login-bg.svg");
+		background-size: 80%;
+		background-position: center;
+		background-repeat: no-repeat;
+		height: 100%;
+		min-height: 500px;
+		min-width: auto;
+		background-color: rgb(16, 177, 78);
+		border-radius: 15px 0px 0px 15px;
+	}
+	.card {
+		border-radius: 0px 15px 15px 0px;
+	}
+}
+
+@media only screen and (max-width: 991px) {
+	.login-area {
+		height: 100%;
+		width: 90%;
+	}
+	.login-image {
+		background-image: url("../../../../assets/images/login-bg.svg");
+		background-size: 60%;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-color: rgb(16, 177, 78);
+		height: 100%;
+		min-height: 200px;
+		min-width: auto;
+	}
+}
+
+.btn-register {
+	background-color: rgb(16, 177, 78);
+	min-width: 180px;
+	height: auto;
+	color: white;
+}
+
+.btn-register:hover {
+	background-color: rgb(21, 121, 59);
+}

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/account-components/login/login.component';
+import { RegisterComponent } from './components/account-components/register/register.component';
 
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
@@ -11,11 +13,13 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { AppLayoutComponent } from './components/_layout/app-layout/app-layout.component';
+import { SimpleLayoutComponent } from './components/_layout/simple-layout/simple-layout.component';
 import { AddPageComponent } from './pages/add-page/add-page.component';
 import { CarDetailPageComponent } from './pages/car-detail-page/car-detail-page.component';
 import { CustomersComponent } from './pages/customers/customers.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { HomeComponent } from './pages/home/home.component';
+import { MembershipPageComponent } from './pages/membership-page/membership-page.component';
 import { PaymentPageComponent } from './pages/payment-page/payment-page.component';
 import { RentalsComponent } from './pages/rentals/rentals.component';
 
@@ -58,7 +62,22 @@ const routes: Routes = [
           { path: 'color/:colorId', component: ColorUpdateComponent },
         ]
       },
-      { path: '**', component: Error404Component },
+
+    ]
+  },
+  {
+    path: '', component: SimpleLayoutComponent, children: [
+      {
+        path: '', component: MembershipPageComponent, children: [
+          { path: 'login', component: LoginComponent },
+          { path: 'register', component: RegisterComponent },
+        ]
+      }
+    ]
+  },
+  {
+    path: '**', component: AppLayoutComponent, children: [
+      { path: '', component: Error404Component }
     ]
   },
 ];

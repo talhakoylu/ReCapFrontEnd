@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row login-area my-4">
+        <div class="col-lg-5 col-md-5 col-sm-12 p-0">
+            <div class="login-image"></div>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-12 p-0 ">
+
+            <div class="card text-center h-100">
+                <button type="button"
+                    class="position-absolute top-0 end-0 me-2 mt-2 bg-secondary shadow-none rounded-circle btn-close p-2 "
+                    aria-label="Close" (click)="goBack()"></button>
+                <div class="card-body d-flex flex-column justify-content-evenly mx-4">
+                    <h5 class="card-title">Welcome Back</h5>
+                    <p class="card-text">Login to your account.</p>
+                    <form [formGroup]="loginForm">
+
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                                formControlName="email" [ngClass]="{ 'is-invalid': loginFormControls.email.touched && loginFormControls.email.errors }" />
+                                <div *ngIf="loginFormControls.email.touched && loginFormControls.email.errors" class="invalid-feedback">
+                                    <div *ngIf="loginFormControls.email.errors.required">Email is required</div>
+                                </div>
+                            <label for="floatingInput">Email address</label>
+                            
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                                formControlName="password" [ngClass]="{ 'is-invalid': loginFormControls.password.touched && loginFormControls.password.errors }" />
+                                <div *ngIf="loginFormControls.password.touched && loginFormControls.password.errors" class="invalid-feedback">
+                                    <div *ngIf="loginFormControls.password.errors.required">Password is required</div>
+                                </div>
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                    </form>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-login rounded-pill position-relative" (click)="login()">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

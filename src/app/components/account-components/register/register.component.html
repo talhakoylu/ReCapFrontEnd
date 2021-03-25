@@ -1,0 +1,100 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row login-area my-4">
+        <div class="col-lg-5 col-md-5 col-sm-12 p-0">
+            <div class="login-image"></div>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-12 p-0 ">
+
+            <div class="card text-center h-100">
+                <button type="button"
+                    class="position-absolute top-0 end-0 me-2 mt-2 bg-secondary shadow-none rounded-circle btn-close p-2 "
+                    aria-label="Close" (click)="goBack()"></button>
+                <div class="card-body d-flex flex-column justify-content-evenly mx-4 my-4">
+                    <h5 class="card-title">Welcome</h5>
+                    <p class="card-text">Create an account to use the website.</p>
+                    <form [formGroup]="registerForm" >
+                        <div class="row">
+                            <div class="col-lg col-sm-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInputFirstName"
+                                        placeholder="John" formControlName="firstName"
+                                        [ngClass]="{ 'is-invalid': registerFormControls.firstName.touched && registerFormControls.firstName.errors }" />
+                                    <div *ngIf="registerFormControls.firstName.touched && registerFormControls.firstName.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="registerFormControls.firstName.errors.required">First name is
+                                            required
+                                        </div>
+                                    </div>
+                                    <label for="floatingInputFirstName">First Name</label>
+                                </div>
+                            </div>
+                            <div class="col-lg col-sm-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInputLastName" placeholder="Doe"
+                                        formControlName="lastName"
+                                        [ngClass]="{ 'is-invalid': registerFormControls.lastName.touched && registerFormControls.lastName.errors }" />
+                                    <div *ngIf="registerFormControls.lastName.touched && registerFormControls.lastName.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="registerFormControls.lastName.errors.required">Last name is required
+                                        </div>
+                                    </div>
+                                    <label for="floatingInputLastName">Last Name</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInputEmail"
+                                placeholder="name@example.com" formControlName="email"
+                                [ngClass]="{ 'is-invalid': registerFormControls.email.touched && registerFormControls.email.errors }" />
+                            <div *ngIf="registerFormControls.email.touched && registerFormControls.email.errors"
+                                class="invalid-feedback">
+                                <div *ngIf="registerFormControls.email.errors.required">Email is required</div>
+                                <div *ngIf="registerFormControls.email.errors.email">This is not a valid email address!
+                                </div>
+                            </div>
+                            <label for="floatingInputEmail">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                                formControlName="password"
+                                [ngClass]="{ 'is-invalid': registerFormControls.password.touched && registerFormControls.password.errors }" />
+                            <div *ngIf="registerFormControls.password.touched && registerFormControls.password.errors"
+                                class="invalid-feedback">
+                                <div *ngIf="registerFormControls.password.errors.required">Password is required</div>
+                            </div>
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingRePassword" placeholder="Password"
+                                formControlName="confirmPassword"
+                                [ngClass]="{ 'is-invalid': registerFormControls.confirmPassword.touched && registerFormControls.confirmPassword.errors }" />
+                            <div *ngIf="registerFormControls.confirmPassword.touched && registerFormControls.confirmPassword.errors"
+                                class="invalid-feedback">
+                                <div *ngIf="registerFormControls.confirmPassword.errors.required">Confirm Password is
+                                    required</div>
+                                <div *ngIf="registerFormControls.confirmPassword.errors.confirmedValidator">Password and
+                                    Confirm Password must be match.</div>
+                            </div>
+                            <label for="floatingRePassword">Confirm your password</label>
+                        </div>
+                    </form>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-register rounded-pill position-relative mt-2" (click)="register()" *ngIf="isSuccess==false">
+                            Register
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">Free</span>
+                        </button>
+
+                        <button class="btn btn-register rounded-pill position-relative mt-2" type="button"
+                            *ngIf="isSuccess==true" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">Free</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
