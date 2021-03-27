@@ -10,7 +10,6 @@
     <li (click)="setCurrentBrand(brand)" *ngFor="let brand of brands | filterBrand:filterText"
         [class]="getCurrentBrandClass(brand)" routerLink="/cars/brand/{{brand.brandId}}" style="cursor: pointer;">
         {{brand.brandName}}
-        <fa-icon [icon]="['far', 'edit']" style="float: right;" routerLink="/update/brand/{{brand.brandId}}" ></fa-icon>
-
+        <fa-icon [icon]="['far', 'edit']" style="float: right;" routerLink="/update/brand/{{brand.brandId}}" *ngIf="authService.isAuthenticated() && authService.roleCheck(['admin', 'yazar'])" ></fa-icon>
     </li>
 </ul>

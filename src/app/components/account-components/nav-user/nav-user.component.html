@@ -1,9 +1,9 @@
-<section id="user-panel" *ngIf="isLoggedIn==false">
+<section id="user-panel" *ngIf="authService.isAuthenticated() == false">
     <app-nav-login></app-nav-login>
 </section>
-<section id="user-panel" *ngIf="isLoggedIn==true">
+<section id="user-panel" *ngIf="authService.isAuthenticated() == true">
     <span>
-        {{welcomeMessage}} {{name}}
+        {{welcomeMessage}} {{authService.name}}
     </span>
     <button class="btn btn-secondary btn-sm dropdown-toggle shadow-none ms-2 " type="button" data-bs-toggle="dropdown"
         aria-expanded="false">
@@ -11,7 +11,7 @@
     </button>
     <ul class="dropdown-menu p-0">
         <li><a class="dropdown-item" routerLink="/user/settings">Profile Settings</a></li>
-        <div *ngIf="roleCheck(['admin', 'yazar'])">
+        <div *ngIf="authService.roleCheck(['admin', 'yazar'])">
             <li>
                 <hr class="dropdown-divider">
             </li>

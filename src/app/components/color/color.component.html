@@ -8,8 +8,10 @@
 <li [class]="getAllColorClass()" routerLink="/cars">Tüm Araçlar</li>
 <ul *ngIf="dataLoaded==true" class="list-group">
     <li (click)="setCurrentColor(color)" *ngFor="let color of colors | filterColor:filterText"
-        [class]="getCurrentColorClass(color)" routerLink="/cars/color/{{color.colorId}}" style="cursor: pointer;">{{color.colorName}}
-        <fa-icon [icon]="['far', 'edit']" style="float: right;" routerLink="/update/color/{{color.colorId}}"></fa-icon>
+        [class]="getCurrentColorClass(color)" routerLink="/cars/color/{{color.colorId}}" style="cursor: pointer;">
+        {{color.colorName}}
+        <fa-icon [icon]="['far', 'edit']" style="float: right;" routerLink="/update/color/{{color.colorId}}"
+            *ngIf="authService.isAuthenticated() && authService.roleCheck(['admin', 'yazar'])"></fa-icon>
     </li>
 
 </ul>

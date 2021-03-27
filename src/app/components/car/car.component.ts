@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/car-image';
+import { AuthService } from 'src/app/services/auth.service';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
 
@@ -17,8 +18,13 @@ export class CarComponent implements OnInit {
   carImages: CarImage[] = [];
   dataLoaded = false;
   currentCar: Car;
-  constructor(private carService: CarService, private activatedRoute: ActivatedRoute, private carImageService: CarImageService,
-    private toastrService: ToastrService) { }
+  constructor(
+    private carService: CarService,
+    private activatedRoute: ActivatedRoute,
+    private carImageService: CarImageService,
+    private toastrService: ToastrService,
+    public authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {

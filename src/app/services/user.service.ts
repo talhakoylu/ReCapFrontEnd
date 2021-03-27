@@ -19,7 +19,7 @@ export class UserService {
   getByEmail(email: string): Observable<SingleResponseModel<UserModel>>{
     return this.httpClient.get<SingleResponseModel<UserModel>>(GlobalConstants.apiUrl + "users/getbyemail?email=" + email);
   }
-  getUserRoles(id: number): Observable<ListResponseModel<RoleModel>>{
-    return this.httpClient.patch<ListResponseModel<RoleModel>>(GlobalConstants.apiUrl + "users/userclaims", id);
+  getUserRoles(id : number): Observable<ListResponseModel<RoleModel>>{
+    return this.httpClient.get<ListResponseModel<RoleModel>>(GlobalConstants.apiUrl + "users/userclaims?user=" + id);
   }
 }

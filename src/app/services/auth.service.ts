@@ -9,16 +9,22 @@ import { TokenModel } from '../models/token-model';
 import { LocalStorageService } from './local-storage.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  name: string = "";
+  roles: any[] = [];
+  token: any;
+  isLoggedIn: boolean = false;
 
   constructor(
     private httpClient: HttpClient,
     private localStorageService: LocalStorageService,
-    private router: Router
+    private router: Router,
+    private jwtHelper: JwtHelperService
   ) { }
 
   login(loginModel: LoginModel): Observable<SingleResponseModel<TokenModel>>{
@@ -33,9 +39,43 @@ export class AuthService {
     return this.localStorageService.checkExistsOrNot("token");
   }
 
+  userDetailFromToken() {
+    this.token = this.localStorageService.get("token");
+    let decodedToken = this.jwtHelper.decodeToken(this.token);
+    let name = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+    this.name = name.split(' ')[0];
+    this.roles = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+  }
+
+  roleCheck(roleList: string[]) {
+    if (this.roles !== undefined) {
+      roleList.forEach(role => {
+        if (this.roles.includes(role)) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   logout(){
     this.localStorageService.clean();
     this.router.navigateByUrl('/');
+    this.onRefresh();
+    
+  }
+
+  onRefresh() {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () { return false }
+    const currentUrl = this.router.url + '?'
+    return this.router.navigateByUrl(currentUrl).then(() => {
+      this.router.navigated = false
+      this.router.navigate([this.router.url])
+    })
   }
 
 }
