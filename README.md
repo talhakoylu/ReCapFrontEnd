@@ -164,3 +164,11 @@ Service and components are binding in files from these folders. In addition, the
      |   |   |   |-- rental.component.ts
 
 </details>
+
+## Updates
+### 25.03.2021
+- [x] Login and register services added.
+- [x] Register, Login, Token Models added.
+- [x] Html views of login and register components were included in the project.
+
+<img src="https://i.imgur.com/KsayNlY.png" width="30%"> <img src="https://i.imgur.com/Jl9JWRV.png" width="30%">
