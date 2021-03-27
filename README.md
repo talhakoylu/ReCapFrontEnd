@@ -190,3 +190,9 @@ Service and components are binding in files from these folders. In addition, the
 
   <img src="https://i.imgur.com/5eJ2xnH.png" width="30%"> <img src="https://i.imgur.com/CAezxAu.png" width="30%"> <img src="https://i.imgur.com/nQ8CxZn.png" width="30%">
 </details>
+
+## Distribution
+This project licenced and distributed under MIT Licence. Please read the <a href="https://github.com/talhakoylu/ReCapFrontEnd/blob/master/LICENSE">LICENCE</a> file for more information.
+
+## Author
+Ahmet Talha KÖYLÜ - <a href="https://github.com/talhakoylu/">Github</a> - <a href="https://linkedin.com/in/talhakoylu">LinkedIn</a>
