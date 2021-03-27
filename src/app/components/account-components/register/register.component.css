@@ -4,7 +4,7 @@
 		width: 60%;
 	}
 	.login-image {
-		background-image: url("../../../../assets/images/login-bg.svg");
+		background-image: url("src/assets/images/login-bg.svg");
 		background-size: 80%;
 		background-position: center;
 		background-repeat: no-repeat;
@@ -25,7 +25,7 @@
 		width: 90%;
 	}
 	.login-image {
-		background-image: url("../../../../assets/images/login-bg.svg");
+		background-image: url("src/assets/images/login-bg.svg");
 		background-size: 60%;
 		background-position: center;
 		background-repeat: no-repeat;

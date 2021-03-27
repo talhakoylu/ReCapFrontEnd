@@ -1,8 +1,12 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { UserModel } from 'src/app/models/user-model';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/common/global-constants';
 
 @Component({
@@ -12,15 +16,23 @@ import { GlobalConstants } from 'src/common/global-constants';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  isSuccess = false;
+  returnUrl: string;
+  token: any;
   constructor(
     private location: Location,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private userService: UserService,
+    private localStorageService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
     this.createLoginForm();
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
   }
 
   goBack() {
@@ -41,10 +53,15 @@ export class LoginComponent implements OnInit {
       let loginModel = this.loginForm.value;
       this.authService.login(loginModel).subscribe(response => {
         this.toastrService.success(GlobalConstants.Messages.loginSuccess);
-        localStorage.setItem("token", response.data.token);
+        this.localStorageService.add("token", response.data.token);
+        this.isSuccess = true;
+        this.localStorageService.add("email",loginModel['email']);       
+        setTimeout(() => {
+          this.router.navigateByUrl(this.returnUrl);
+        }, 3000);
       }, responseError => {
         this.toastrService.error(GlobalConstants.Messages.loginError);
-      });
+      })
     } else {
       if (this.loginForm.get('email')?.hasError('required') && this.loginForm.get('password')?.hasError('required')) {
         this.toastrService.error("Email ve şifre alanı boş olamaz.");
@@ -56,4 +73,5 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  
 }

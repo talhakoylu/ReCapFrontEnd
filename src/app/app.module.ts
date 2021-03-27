@@ -24,18 +24,12 @@ import { FilterBrandPipe } from './pipes/filter-brand.pipe';
 import { FilterColorPipe } from './pipes/filter-color.pipe';
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
 import { PaymentPageComponent } from './pages/payment-page/payment-page.component';
-
-import { ToastrModule } from 'ngx-toastr';
 import { RentCarComponent } from './components/rent-car/rent-car.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { AddPageComponent } from './pages/add-page/add-page.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
-
-import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
@@ -43,7 +37,21 @@ import { SimpleLayoutComponent } from './components/_layout/simple-layout/simple
 import { MembershipPageComponent } from './pages/membership-page/membership-page.component';
 import { LoginComponent } from './components/account-components/login/login.component';
 import { RegisterComponent } from './components/account-components/register/register.component';
+
+import { ToastrModule } from 'ngx-toastr';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { JwtModule } from '@auth0/angular-jwt';
+
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AppHeaderAccountAreaComponent } from './components/_layout/app-header-account-area/app-header-account-area.component';
+import { NavUserComponent } from './components/account-components/nav-user/nav-user.component';
+import { NavLoginComponent } from './components/account-components/nav-login/nav-login.component';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -77,7 +85,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     SimpleLayoutComponent,
     MembershipPageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AppHeaderAccountAreaComponent,
+    NavUserComponent,
+    NavLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -91,14 +102,19 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     }),
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: tokenGetter,
+      }
+    }),
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas);
     library.addIconPacks(far);

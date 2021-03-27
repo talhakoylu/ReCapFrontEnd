@@ -33,11 +33,20 @@
                                 <label for="floatingPassword">Password</label>
                             </div>
                     </form>
+                    
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-login rounded-pill position-relative" (click)="login()">
+                        <button class="btn btn-login rounded-pill position-relative" *ngIf="isSuccess==false" (click)="login()">
                             Login
                         </button>
+                        <button class="btn btn-login rounded-pill position-relative" *ngIf="isSuccess==true" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        </button>
                     </div>
+
+                        <p class= "text-break pt-3">Do you need an account? Sign up now</p>
+                        <button class="position-absolute top-100 start-50 translate-middle btn btn-register rounded-pill" [routerLink]="['/register']">
+                            Register
+                        </button>
                 </div>
             </div>
         </div>

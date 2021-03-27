@@ -14,6 +14,9 @@ import { ColorUpdateComponent } from './components/color-update/color-update.com
 import { PaymentComponent } from './components/payment/payment.component';
 import { AppLayoutComponent } from './components/_layout/app-layout/app-layout.component';
 import { SimpleLayoutComponent } from './components/_layout/simple-layout/simple-layout.component';
+import { AdminRoleGuard } from './guards/admin-role.guard';
+import { LoggedInGuard } from './guards/logged-in.guard';
+import { LoginGuard } from './guards/login.guard';
 import { AddPageComponent } from './pages/add-page/add-page.component';
 import { CarDetailPageComponent } from './pages/car-detail-page/car-detail-page.component';
 import { CustomersComponent } from './pages/customers/customers.component';
@@ -39,7 +42,7 @@ const routes: Routes = [
       },
       { path: 'car-detail/:carId', component: CarDetailPageComponent },
       {
-        path: 'payment', component: PaymentPageComponent, children: [
+        path: 'payment', component: PaymentPageComponent, canActivate: [LoginGuard], children: [
           { path: '', component: PaymentComponent }
         ]
       },
@@ -47,7 +50,7 @@ const routes: Routes = [
       { path: 'customers', component: CustomersComponent },
       { path: '404', component: Error404Component },
       {
-        path: 'add', component: AddPageComponent, children: [
+        path: 'add', component: AddPageComponent, canActivate: [LoginGuard, AdminRoleGuard], children: [
           { path: '', component: AddPageComponent },
           { path: 'car', component: CarAddComponent },
           { path: 'brand', component: BrandAddComponent },
@@ -55,7 +58,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'update', component: AddPageComponent, children: [
+        path: 'update', component: AddPageComponent, canActivate: [LoginGuard, AdminRoleGuard], children: [
           { path: '', component: AddPageComponent },
           { path: 'car/:carId', component: CarUpdateComponent },
           { path: 'brand/:brandId', component: BrandUpdateComponent },
@@ -69,8 +72,8 @@ const routes: Routes = [
     path: '', component: SimpleLayoutComponent, children: [
       {
         path: '', component: MembershipPageComponent, children: [
-          { path: 'login', component: LoginComponent },
-          { path: 'register', component: RegisterComponent },
+          { path: 'login', component: LoginComponent, canActivate: [LoggedInGuard]},
+          { path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard] },
         ]
       }
     ]
