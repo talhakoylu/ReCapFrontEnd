@@ -10,6 +10,7 @@ import { LocalStorageService } from './local-storage.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +20,14 @@ export class AuthService {
   roles: any[] = [];
   token: any;
   isLoggedIn: boolean = false;
+  userId: number;
 
   constructor(
     private httpClient: HttpClient,
     private localStorageService: LocalStorageService,
     private router: Router,
-    private jwtHelper: JwtHelperService
+    private jwtHelper: JwtHelperService,
+    private toastrService: ToastrService
   ) { }
 
   login(loginModel: LoginModel): Observable<SingleResponseModel<TokenModel>>{
@@ -45,6 +48,7 @@ export class AuthService {
     let name = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
     this.name = name.split(' ')[0];
     this.roles = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+    this.userId = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
   }
 
   roleCheck(roleList: string[]) {
@@ -64,12 +68,12 @@ export class AuthService {
 
   logout(){
     this.localStorageService.clean();
-    this.router.navigateByUrl('/');
     this.onRefresh();
-    
+    this.router.navigateByUrl('/');
+    this.toastrService.info(GlobalConstants.Messages.logoutSuccess);
   }
 
-  onRefresh() {
+  async onRefresh() {
     this.router.routeReuseStrategy.shouldReuseRoute = function () { return false }
     const currentUrl = this.router.url + '?'
     return this.router.navigateByUrl(currentUrl).then(() => {
