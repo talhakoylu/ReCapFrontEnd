@@ -13,6 +13,7 @@ import { ResponseModel } from '../models/responseModel';
 })
 export class PaymentService {
   apiUrl = "https://localhost:44327/api/";
+  cartArray: any[] = [];
   constructor(private httpClient : HttpClient) { }
 
   addPayment(payment:Payment) : Observable<ResponseModel>{
@@ -25,6 +26,8 @@ export class PaymentService {
     let cartItem = new CartItem();
     cartItem.rental = rental;
     CartItems.push(cartItem);
+    this.cartArray = CartItems;
+    localStorage['cart'] = JSON.stringify(this.cartArray);
   }
 
   listCart(): CartItem[]{

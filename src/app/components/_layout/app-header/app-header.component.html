@@ -23,6 +23,13 @@
           <a class="nav-link" aria-current="page" [routerLink]="['/cars']" routerLinkActive="active"
             [routerLinkActiveOptions]="{exact:true}">Cars</a>
         </li>
+        <li class="nav-item">
+          <button class="btn bg-transparent text-white position-relative shadow-none" routerLink="/payment" *ngIf="cartCount() > 0">
+            <fa-icon [icon]="['fas','shopping-cart']"></fa-icon>
+            <span
+                class="position-absolute translate-middle badge rounded-pill bg-warning text-dark mt-2">{{cartCount()}}</span>
+        </button>
+        </li>
       </ul>
 
     </div>

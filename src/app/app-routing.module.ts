@@ -12,6 +12,7 @@ import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { UserCompanyComponent } from './components/user/user-company/user-company.component';
 import { UserPasswordComponent } from './components/user/user-password/user-password.component';
 import { UserSettingsComponent } from './components/user/user-settings/user-settings.component';
 import { UserComponent } from './components/user/user.component';
@@ -47,7 +48,7 @@ const routes: Routes = [
         {path: 'settings', component: UserSettingsComponent},
         {path: 'password', component: UserPasswordComponent},
         {path: 'cards', component: UserPasswordComponent},
-        {path: 'company', component: UserPasswordComponent},
+        {path: 'company', component: UserCompanyComponent},
       ]},
       { path: 'car-detail/:carId', component: CarDetailPageComponent },
       {

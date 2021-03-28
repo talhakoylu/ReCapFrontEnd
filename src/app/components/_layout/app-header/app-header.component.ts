@@ -9,12 +9,20 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class AppHeaderComponent implements OnInit {
   token:any = "";
+  isCartExists: boolean;
   constructor(
     private localStorageService: LocalStorageService,
     private jwtHelper: JwtHelperService
   ) { }
 
   ngOnInit(): void {
+    this.isCartExists = this.localStorageService.checkExistsOrNot('cart');
+  }
+
+  cartCount(){
+    let cartLocal = this.localStorageService.get('cart');
+    let parsedCart = (cartLocal) ? JSON.parse(cartLocal) : [];
+    return parsedCart.length;
   }
 
   getToken(){

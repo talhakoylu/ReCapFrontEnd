@@ -52,6 +52,7 @@ import { UserComponent } from './components/user/user.component';
 import { UserSidebarComponent } from './components/user/user-sidebar/user-sidebar.component';
 import { UserSettingsComponent } from './components/user/user-settings/user-settings.component';
 import { UserPasswordComponent } from './components/user/user-password/user-password.component';
+import { UserCompanyComponent } from './components/user/user-company/user-company.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -97,6 +98,7 @@ export function tokenGetter() {
     UserSidebarComponent,
     UserSettingsComponent,
     UserPasswordComponent,
+    UserCompanyComponent,
   ],
   imports: [
     BrowserModule,

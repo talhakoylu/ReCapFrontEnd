@@ -1,0 +1,38 @@
+<div *ngIf="isCompany">
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">Zaten bir şirket hesabına sahipsiniz!</h4>
+        <p>1 kullanıcının yalnızca bir şirket hesabı bulunabilir. Bu sebepten dolayı <strong>başka bir şirket hesabı
+                oluşturamazsınız.</strong></p>
+        <hr>
+        <p class="mb-0">
+            <strong>Şirket Adı: </strong> {{company.companyName}}
+        </p>
+    </div>
+</div>
+<div *ngIf="!isCompany">
+
+    <div class="card">
+        <div class="card-body ">
+            <form class="row g-3" [formGroup]="customerForm">
+                <div class="col-md-12 col-sm-12">
+                    <label for="inputCompanyName" class="form-label">Company Name</label>
+                    <input type="text" class="form-control" id="inputCompanyName" formControlName="companyName"
+                        [ngClass]="{ 'is-invalid': customerFormControls.companyName.touched && customerFormControls.companyName.errors }" />
+                    <div *ngIf="customerFormControls.companyName.touched && customerFormControls.companyName.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="customerFormControls.companyName.errors.required">Company name is required</div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary" *ngIf="isClickedUpdateButton==false"
+                        (click)="postCompanyForm()">Create a Company</button>
+                    <button class="btn btn-primary" *ngIf="isClickedUpdateButton==true" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GlobalConstants } from 'src/common/global-constants';
+import { CompanyRequestModel } from '../models/company-request-model';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
 import { RoleModel } from '../models/role';
@@ -31,4 +32,5 @@ export class UserService {
   postUserUpdate(user: UserModel, password: string ): Observable<ResponseModel> {
     return this.httpClient.post<ResponseModel>(GlobalConstants.apiUrl + 'users/update', {user, password});
   }
+
 }
