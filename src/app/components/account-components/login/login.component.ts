@@ -55,7 +55,6 @@ export class LoginComponent implements OnInit {
         this.toastrService.success(GlobalConstants.Messages.loginSuccess);
         this.localStorageService.add("token", response.data.token);
         this.isSuccess = true;
-        this.localStorageService.add("email",loginModel['email']);       
         setTimeout(() => {
           this.router.navigateByUrl(this.returnUrl);
         }, 3000);

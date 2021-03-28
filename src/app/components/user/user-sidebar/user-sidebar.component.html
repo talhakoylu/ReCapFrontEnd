@@ -1,0 +1,15 @@
+<div class="card">
+    <h6 class="card-header text-center">Profile Settings</h6>
+    <div class="card-body p-0">
+        <ul class="list-group list-group-flush" style="cursor: pointer;">
+            <li class="list-group-item" [routerLink]="['/user/settings']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">Profil Bilgileri</li>
+            <li class="list-group-item" [routerLink]="['/user/company']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">Şirket Yönetimi</li>
+            <li class="list-group-item" [routerLink]="['/user/password']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">Şifre İşlemleri</li>
+            <li class="list-group-item" [routerLink]="['/user/cards']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">Kayıtlı Kartlarım</li>
+        </ul>
+    </div>
+</div>

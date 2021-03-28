@@ -27,4 +27,8 @@ export class NavUserComponent implements OnInit {
   logOut() {
     this.authService.logout();
   }
+
+  getUserDetail(){
+    
+  }
 }

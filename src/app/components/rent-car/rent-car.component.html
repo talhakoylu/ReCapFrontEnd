@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             <label for="example-date-input" class="col-lg-auto col-form-label">Şirket</label>
-            <select class="form-select col-lg" [(ngModel)]="customerId">
+            <select class="form-select col-lg me-2" [(ngModel)]="customerId">
                 <option [value]="customer.userId" *ngFor="let customer of customers">
                     {{ customer.firstName }} {{ customer.lastName }} |
                     {{ customer.companyName }}

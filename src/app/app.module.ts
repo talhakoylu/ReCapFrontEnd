@@ -48,6 +48,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AppHeaderAccountAreaComponent } from './components/_layout/app-header-account-area/app-header-account-area.component';
 import { NavUserComponent } from './components/account-components/nav-user/nav-user.component';
 import { NavLoginComponent } from './components/account-components/nav-login/nav-login.component';
+import { UserComponent } from './components/user/user.component';
+import { UserSidebarComponent } from './components/user/user-sidebar/user-sidebar.component';
+import { UserSettingsComponent } from './components/user/user-settings/user-settings.component';
+import { UserPasswordComponent } from './components/user/user-password/user-password.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -88,7 +92,11 @@ export function tokenGetter() {
     RegisterComponent,
     AppHeaderAccountAreaComponent,
     NavUserComponent,
-    NavLoginComponent
+    NavLoginComponent,
+    UserComponent,
+    UserSidebarComponent,
+    UserSettingsComponent,
+    UserPasswordComponent,
   ],
   imports: [
     BrowserModule,

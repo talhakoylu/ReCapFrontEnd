@@ -12,6 +12,9 @@ import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { UserPasswordComponent } from './components/user/user-password/user-password.component';
+import { UserSettingsComponent } from './components/user/user-settings/user-settings.component';
+import { UserComponent } from './components/user/user.component';
 import { AppLayoutComponent } from './components/_layout/app-layout/app-layout.component';
 import { SimpleLayoutComponent } from './components/_layout/simple-layout/simple-layout.component';
 import { AdminRoleGuard } from './guards/admin-role.guard';
@@ -40,6 +43,12 @@ const routes: Routes = [
           { path: 'cars/filter/:colorId/:brandId', component: CarComponent },
         ]
       },
+      {path: 'user', component: UserComponent, canActivate: [LoginGuard], children: [
+        {path: 'settings', component: UserSettingsComponent},
+        {path: 'password', component: UserPasswordComponent},
+        {path: 'cards', component: UserPasswordComponent},
+        {path: 'company', component: UserPasswordComponent},
+      ]},
       { path: 'car-detail/:carId', component: CarDetailPageComponent },
       {
         path: 'payment', component: PaymentPageComponent, canActivate: [LoginGuard], children: [

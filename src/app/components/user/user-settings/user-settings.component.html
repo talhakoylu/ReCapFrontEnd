@@ -1,0 +1,50 @@
+<div class="card">
+    <div class="card-body ">
+        <form class="row g-3" [formGroup]="userUpdateForm">
+            <div class="col-md-6 col-sm-12">
+                <label for="inputFirstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="inputFirstName" formControlName="firstName"
+                [ngClass]="{ 'is-invalid': updateFormControls.firstName.touched && updateFormControls.firstName.errors }" />
+            <div *ngIf="updateFormControls.firstName.touched && updateFormControls.firstName.errors"
+                class="invalid-feedback">
+                <div *ngIf="updateFormControls.firstName.errors.required">First name is required</div>
+            </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <label for="inputLastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="inputLastName" formControlName="lastName"
+                    [ngClass]="{ 'is-invalid': updateFormControls.lastName.touched && updateFormControls.lastName.errors }" />
+                <div *ngIf="updateFormControls.lastName.touched && updateFormControls.lastName.errors"
+                    class="invalid-feedback">
+                    <div *ngIf="updateFormControls.lastName.errors.required">Last name is required</div>
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" formControlName="email"
+                    [ngClass]="{ 'is-invalid': updateFormControls.email.touched && updateFormControls.email.errors }" />
+                <div *ngIf="updateFormControls.email.touched && updateFormControls.email.errors"
+                    class="invalid-feedback">
+                    <div *ngIf="updateFormControls.email.errors.required">Email is required</div>
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="inputPassword" class="form-label">Password</label>
+                <span class="ms-2 fst-italic text-danger">Please enter your password to continue.</span>
+                <input type="password" class="form-control" id="inputPassword" formControlName="password"
+                    [ngClass]="{ 'is-invalid': updateFormControls.password.touched && updateFormControls.password.errors }" />
+                <div *ngIf="updateFormControls.password.touched && updateFormControls.password.errors"
+                    class="invalid-feedback">
+                    <div *ngIf="updateFormControls.password.errors.required">Password is required</div>
+                </div>
+            </div>
+
+            <div class="col-12 d-flex justify-content-end">
+                <button type="submit" class="btn btn-success" *ngIf="isSuccess==false"  (click)="postUserUpdate()">Update</button>
+                <button class="btn btn-success" *ngIf="isSuccess==true" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

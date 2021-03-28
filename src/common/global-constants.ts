@@ -8,5 +8,8 @@ export class GlobalConstants {
         public static logoutSuccess: string = "Hesabınızdan başarılı bir şekilde çıkış yaptınız.";
 
         public static welcomeMessage: string = "Hoş geldin";
+
+        public static profileUpdateSuccess: string = "Hesap başarıyla güncellendi.";
+        public static profileUpdateAftreLoginRequried: string = "Güvenlik nedeniyle tekrar giriş yapmanız gerekmekte, yönlendiriliyorsunuz..";
     }
 }
