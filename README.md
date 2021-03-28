@@ -166,9 +166,33 @@ Service and components are binding in files from these folders. In addition, the
 </details>
 
 ## Updates
-### 25.03.2021
-- [x] Login and register services added.
-- [x] Register, Login, Token Models added.
-- [x] Html views of login and register components were included in the project.
+#### 25.03.2021
 
-<img src="https://i.imgur.com/KsayNlY.png" width="30%"> <img src="https://i.imgur.com/Jl9JWRV.png" width="30%">
+<details>
+  <summary>Details and Images</summary>
+  
+  - [x] Login and register services added.
+  - [x] Register, Login, Token Models added.
+  - [x] Html views of login and register components were included in the project.
+
+  <img src="https://i.imgur.com/KsayNlY.png" width="30%"> <img src="https://i.imgur.com/Jl9JWRV.png" width="30%">
+</details>
+
+#### 27.03.2021
+
+<details>
+  <summary>Details and Images</summary>
+  
+  - [x] Login, Register and Account buttons added on the navbar.
+  - [x] Logged in, not login, logout situations handled. Buttons change according to the situation.
+  - [x] Not login, already logged in, role guards were added into the project and included in routes.
+  - [x] Administration buttons were hided from normal users and visitors. If the user has admin or author role, then the user will be able to see those buttons.
+
+  <img src="https://i.imgur.com/5eJ2xnH.png" width="30%"> <img src="https://i.imgur.com/CAezxAu.png" width="30%"> <img src="https://i.imgur.com/nQ8CxZn.png" width="30%">
+</details>
+
+## Distribution
+This project licenced and distributed under MIT Licence. Please read the <a href="https://github.com/talhakoylu/ReCapFrontEnd/blob/master/LICENSE">LICENCE</a> file for more information.
+
+## Author
+Ahmet Talha KÖYLÜ - <a href="https://github.com/talhakoylu/">Github</a> - <a href="https://linkedin.com/in/talhakoylu">LinkedIn</a>
