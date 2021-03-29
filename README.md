@@ -19,7 +19,9 @@ Click on the link below to get information about BackEnd side. Backend is develo
 ## Used Technologies and Their Versions
 [![Angular](https://img.shields.io/badge/Angular-v11.2.3-red?style=for-the-badge&logo=angular)](https://angular.io)
 [![Angular-Fontawesome](https://img.shields.io/badge/Angular%20Fontawesome-0.8.2-red?style=for-the-badge&logo=angular)](https://github.com/FortAwesome/angular-fontawesome)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.0.0--beta2-blueviolet?style=for-the-badge&logo=bootstrap)](https://getbootstrap.com)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.0.0--beta2-blueviolet?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
+[![TypeScript](https://img.shields.io/badge/Typescript-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+
 
 ## Images
 You can get information about what the project looks like via the images below.
