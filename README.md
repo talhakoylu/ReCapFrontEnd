@@ -193,6 +193,22 @@ Service and components are binding in files from these folders. In addition, the
   <img src="https://i.imgur.com/5eJ2xnH.png" width="30%"> <img src="https://i.imgur.com/CAezxAu.png" width="30%"> <img src="https://i.imgur.com/nQ8CxZn.png" width="30%">
 </details>
 
+#### 30.03.2021
+
+<details>
+  <summary>Details and Images</summary>
+  
+  - [x] Profile update page added.
+  - [x] Users can save their credit cards if they want this while paying
+  - [x] Findeks score service was simulated. If the user does not have enough point in terms of car's findeks score, the user can not rent that car.
+  - [x] Added a few controls in terms of credit card and findeks score.
+  - [x] If the user rents a car, the user has to be a company. The user can be a company in account management page. The user can has have up to 1 company.
+
+  <img src="https://i.imgur.com/pHJF2y5.png" width="30%"> <img src="https://i.imgur.com/dYSKGeV.png" width="30%"> <img src="https://i.imgur.com/wd32lVS.png" width="30%"> 
+  <img src="https://i.imgur.com/yP2Cldr.png" width="30%"> <img src="https://i.imgur.com/3KyRwJd.png" width="30%"> <img src="https://i.imgur.com/eXVslUd.png" width="30%"> 
+  
+</details>
+
 ## Distribution
 This project licenced and distributed under MIT Licence. Please read the <a href="https://github.com/talhakoylu/ReCapFrontEnd/blob/master/LICENSE">LICENCE</a> file for more information.
 
