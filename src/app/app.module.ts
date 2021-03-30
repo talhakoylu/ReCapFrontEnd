@@ -53,6 +53,8 @@ import { UserSidebarComponent } from './components/user/user-sidebar/user-sideba
 import { UserSettingsComponent } from './components/user/user-settings/user-settings.component';
 import { UserPasswordComponent } from './components/user/user-password/user-password.component';
 import { UserCompanyComponent } from './components/user/user-company/user-company.component';
+import { UserCreditCardsComponent } from './components/user/user-credit-cards/user-credit-cards.component';
+import { UserFindeksScoreComponent } from './components/user/user-findeks-score/user-findeks-score.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -99,6 +101,8 @@ export function tokenGetter() {
     UserSettingsComponent,
     UserPasswordComponent,
     UserCompanyComponent,
+    UserCreditCardsComponent,
+    UserFindeksScoreComponent,
   ],
   imports: [
     BrowserModule,

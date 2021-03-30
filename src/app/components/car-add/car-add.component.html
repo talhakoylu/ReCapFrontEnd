@@ -50,7 +50,13 @@
                             <label for="dailyPriceInput" class="form-label">Daily Price:</label>
                         </div>
                         <div class="col-lg">
-                            <input type="number" class="form-control" id="dailyPriceInput" formControlName="dailyPrice" placeholder="e.g. 250">                          
+                            <input type="number" class="form-control" id="dailyPriceInput" formControlName="dailyPrice"
+                                placeholder="e.g. 250"
+                                [ngClass]="{ 'is-invalid': carFormControls.dailyPrice.touched && carFormControls.dailyPrice.errors }" />
+                            <div *ngIf="carFormControls.dailyPrice.touched && carFormControls.dailyPrice.errors"
+                                class="invalid-feedback">
+                                <div *ngIf="carFormControls.dailyPrice.errors.required">Daily price is required</div>
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -58,7 +64,29 @@
                             <label for="descriptionInput" class="form-label">Description:</label>
                         </div>
                         <div class="col-lg">
-                            <textarea class="form-control" id="descriptionInput" rows="3" formControlName="description" placeholder="Description..."></textarea>
+                            <textarea class="form-control" id="descriptionInput" rows="3" formControlName="description"
+                                placeholder="Description..."
+                                [ngClass]="{ 'is-invalid': carFormControls.description.touched && carFormControls.description.errors }">
+                                <div *ngIf="carFormControls.description.touched && carFormControls.description.errors"
+                                    class="invalid-feedback">
+                                    <div *ngIf="carFormControls.description.errors.required">Description is required</div>
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <label for="findeksScoreInput" class="form-label">Findeks Score:</label>
+                        </div>
+                        <div class="col-lg">
+                            <input type="number" class="form-control" id="findeksScoreInput"
+                                formControlName="findeksScore" placeholder="e.g. 250"
+                                [ngClass]="{ 'is-invalid': carFormControls.findeksScore.touched && carFormControls.findeksScore.errors }" />
+                            <div *ngIf="carFormControls.findeksScore.touched && carFormControls.findeksScore.errors"
+                                class="invalid-feedback">
+                                <div *ngIf="carFormControls.findeksScore.errors.required">Findeks Score is required
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -66,7 +94,7 @@
             <div class="card-footer">
                 <div class="d-grid gap-2">
                     <button class="btn btn-success" (click)="addCar()" type="button">Add</button>
-                  </div>
+                </div>
             </div>
         </div>
     </div>

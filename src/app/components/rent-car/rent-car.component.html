@@ -1,4 +1,4 @@
-<div class="card" *ngIf="isLoggedIn">
+<div class="card">
     <h5 class="card-header">Araç Kirala</h5>
     <div class="card-body">
         <div class="mb-3 row">
@@ -8,13 +8,7 @@
                     aria-label="Disabled input example" disabled>
             </div>
         </div>
-        <!-- <select class="form-select col-lg me-2" [(ngModel)]="customerId">
-                <option [value]="customer.userId" *ngFor="let customer of customers">
-                    {{ customer.firstName }} {{ customer.lastName }} |
-                    {{ customer.companyName }}
-                </option>
-            </select> -->
-        <div class="row" *ngIf="!isCompany && isLoggedIn">
+        <div class="row" *ngIf="!isCompany">
             <label for="example-date-input" class="col-lg-auto col-form-label">Şirket</label>
             <p class="text-danger" style="font-size: 0.9rem">Araba kiralamak için şirket olmanız gerekmektedir.
                 Şirketiniz yoksa, kişisel bilgilerinizle şirket hesabına geçiş yapabilirsiniz.</p>
@@ -26,7 +20,7 @@
                 </button>
             </div>
         </div>
-        <div class="row pe-1" *ngIf="isCompany && isLoggedIn">
+        <div class="row pe-1" *ngIf="isCompany">
             <label for="example-date-input" class="col-lg-auto col-form-label">Şirket</label>
             <input [(ngModel)]="customerId" class="form-control col-lg me-2" id="disabledInput" type="text"
                 placeholder="{{customer.companyName}}" [value]="customer.userId" disabled>
@@ -46,20 +40,5 @@
             <button class="btn btn-danger mt-3" *ngIf="checkAvailability() == false && isCompany" disabled>Araç
                 Kullanımda</button>
         </div>
-    </div>
-</div>
-
-<div class="card" *ngIf="!isLoggedIn">
-    <h5 class="card-header">Araç Kirala</h5>
-    <div class="card-body">
-        <p>Araç kiralayabilmek için öncelikle giriş yapmanız gerekmekte.</p>
-        <div class="d-grid gap-2">
-            <button type="button" class="btn btn-dark shadow-none" routerLink="/login">
-                Giriş Yap <span class="badge bg-warning rounded-pill">
-                    <fa-icon [icon]="['fas', 'chevron-right']" size="lg"></fa-icon>
-                </span>
-            </button>
-        </div>
-
     </div>
 </div>

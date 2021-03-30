@@ -1,0 +1,39 @@
+<div *ngIf="creditCards.length === 0">
+    <div class="alert alert-info" role="alert">
+        <p><strong>Kayıtlı kart bulunamadı.</strong></p>
+    </div>
+</div>
+
+
+<div *ngIf="creditCards.length > 0">
+    <div class="card mb-3" *ngFor="let card of creditCards">
+        <div class="card-body">
+            <p class="h4">{{card.cardName}}</p>
+            <div class="row mb-2">
+                <div class="col-lg-6 col-sm-12">
+                    <strong class="me-2">Kart Üzerindeki İsim</strong>
+                   {{card.nameOnCard}}
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <strong class="me-2">Kart Numarası</strong>
+                    {{card.cardNumber}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <strong class="me-2">Ay</strong>
+                    {{card.cardMonth}}
+                </div>
+                <div class="col-lg-6">
+                    <strong class="me-2">Yıl</strong>
+                    {{card.cardYear}}
+                </div>
+            </div>
+
+            
+            
+            
+            
+        </div>
+    </div>
+</div>

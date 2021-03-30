@@ -28,7 +28,6 @@ export class RentCarComponent implements OnInit {
   rentDateValue: Date;
   rentalCar: Rental;
   isRentBefore: Boolean = false;
-  isLoggedIn: boolean = false;
   userId: number;
   isCompany = false;
   constructor(
@@ -45,14 +44,12 @@ export class RentCarComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if (params["carId"]) {
-        this.isLoggedIn = this.authService.isAuthenticated();
-        if (this.isLoggedIn) {
-          this.authService.userDetailFromToken()
-          this.userId = this.authService.userId;
-          this.getCarDetail(params["carId"]);
-          this.getRentalByCarId(params["carId"]);
-          this.getCustomer();
-        }
+        this.authService.userDetailFromToken()
+        this.userId = this.authService.userId;
+        this.getCarDetail(params["carId"]);
+        this.getRentalByCarId(params["carId"]);
+        this.getCustomer();
+
       }
     })
   }
@@ -93,8 +90,6 @@ export class RentCarComponent implements OnInit {
       customerId: parseInt(this.customer.userId.toString())
     }
     this.paymentService.addToCart(MyRental);
-    console.log(this.paymentService.listCart());
-
     this.router.navigate(['/payment/']);
     this.toastrService.info("Ödeme sayfasına yönlendiriliyorsunuz...", "Ödeme İşlemleri");
 

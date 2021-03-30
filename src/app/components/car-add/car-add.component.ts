@@ -62,9 +62,10 @@ export class CarAddComponent implements OnInit {
       modelYear: ["", Validators.required],
       dailyPrice: ["", Validators.required],
       description: ["", Validators.required],
+      findeksScore: ["", [Validators.required, Validators.min(0), Validators.max(1901)]]
     });
   }
-
+  get carFormControls() { return this.carAddForm.controls; }
   addCar() {
     if (this.carAddForm.valid) {
       let carModel = Object.assign({}, this.carAddForm.value);

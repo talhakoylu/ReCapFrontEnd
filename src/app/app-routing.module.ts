@@ -13,6 +13,8 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { UserCompanyComponent } from './components/user/user-company/user-company.component';
+import { UserCreditCardsComponent } from './components/user/user-credit-cards/user-credit-cards.component';
+import { UserFindeksScoreComponent } from './components/user/user-findeks-score/user-findeks-score.component';
 import { UserPasswordComponent } from './components/user/user-password/user-password.component';
 import { UserSettingsComponent } from './components/user/user-settings/user-settings.component';
 import { UserComponent } from './components/user/user.component';
@@ -47,8 +49,9 @@ const routes: Routes = [
       {path: 'user', component: UserComponent, canActivate: [LoginGuard], children: [
         {path: 'settings', component: UserSettingsComponent},
         {path: 'password', component: UserPasswordComponent},
-        {path: 'cards', component: UserPasswordComponent},
+        {path: 'cards', component: UserCreditCardsComponent},
         {path: 'company', component: UserCompanyComponent},
+        {path: 'findeks', component: UserFindeksScoreComponent},
       ]},
       { path: 'car-detail/:carId', component: CarDetailPageComponent },
       {

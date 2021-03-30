@@ -1,0 +1,74 @@
+<div *ngIf="!isHasFindeksScore">
+    <div class="alert alert-warning" role="alert">
+        <strong>Findeks puanınız bulunmuyor hemen hesaplatın.</strong>
+    </div>
+
+    <div class="card mt-2">
+        <div class="card-body">
+            <form class="row g-3" [formGroup]="findeksForm">
+                <div class="col-md-12 col-sm-12">
+                    <label for="inputFirstName" class="form-label">National Identity Number</label>
+                    <input type="number"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                        maxlength="11" class="form-control" id="inputFirstName" formControlName="nationalIdentity"
+                        [ngClass]="{ 'is-invalid': findeksFormControls.nationalIdentity.touched && findeksFormControls.nationalIdentity.errors }" />
+                    <div *ngIf="findeksFormControls.nationalIdentity.touched && findeksFormControls.nationalIdentity.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="findeksFormControls.nationalIdentity.errors.required">National Identity Number is
+                            required</div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label for="inputYear" class="form-label">Birth Year</label>
+                    <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                    maxlength="4" class="form-control" id="inputerYear" formControlName="year"
+                        [ngClass]="{ 'is-invalid': findeksFormControls.year.touched && findeksFormControls.year.errors }" />
+                    <div *ngIf="findeksFormControls.year.touched && findeksFormControls.year.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="findeksFormControls.year.errors.required">Birth year is required</div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label for="inputMonth" class="form-label">Birth Month</label>
+                    <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                    maxlength="2" class="form-control" id="inputMonth" formControlName="month"
+                        [ngClass]="{ 'is-invalid': findeksFormControls.month.touched && findeksFormControls.month.errors }" />
+                    <div *ngIf="findeksFormControls.month.touched && findeksFormControls.month.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="findeksFormControls.month.errors.required">Birth month is required</div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label for="inputDay" class="form-label">Birth Day</label>
+                    <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+                    maxlength="2" class="form-control" id="inputDay" formControlName="day"
+                        [ngClass]="{ 'is-invalid': findeksFormControls.day.touched && findeksFormControls.day.errors }" />
+                    <div *ngIf="findeksFormControls.day.touched && findeksFormControls.day.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="findeksFormControls.day.errors.required">Birth day is required</div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success" *ngIf="!spinner"
+                        (click)="postFindeksForm()">Calculate Findeks Score</button>
+                    <button class="btn btn-success" *ngIf="spinner" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="isHasFindeksScore">
+    <div class="card mb-3">
+        <div class="card-body" *ngIf="findeksModel !== null || findeksModel !== undefined">
+            <div class="alert alert-info mb-0" role="alert">
+                <strong>Findeks Puanınız: </strong> {{findeksModel.findeksScore}}
+            </div>
+        </div>
+    </div>
+</div>

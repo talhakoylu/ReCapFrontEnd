@@ -1,5 +1,5 @@
 <div class="alert alert-warning" role="alert" *ngIf="cars.length == 0">
-    <div class="row align-items-center" >
+    <div class="row align-items-center">
         <div class="col-lg col-sm-12">
             <h4 class="alert-heading">Sepetiniz boş</h4>
             <p class="mb-0">Sepetinizde şu an ürün bulunmuyor.</p>
@@ -7,9 +7,9 @@
         <div class="col-lg-auto col-sm-12">
             <button type="button" class="btn btn-dark shadow-none" routerLink="/cars">
                 Alışverişe Başla <span class="badge bg-warning rounded-pill">
-                    <fa-icon [icon]="['fas', 'chevron-right']"  size="lg"></fa-icon>
+                    <fa-icon [icon]="['fas', 'chevron-right']" size="lg"></fa-icon>
                 </span>
-              </button>
+            </button>
         </div>
     </div>
 </div>
@@ -33,7 +33,7 @@
             <tbody>
                 <tr *ngFor="let car of cars; let i = index">
                     <th scope="row">{{car.brandName}}</th>
-                    <td>{{car.brandName}}</td>
+                    <td>{{car.colorName}}</td>
                     <td>{{car.modelYear}}</td>
                     <td>{{(car.description.length > 15)?(car.description | slice:0:10)+'..':(car.description)}}</td>
                     <td>{{car.dailyPrice | currency:'₺'}}</td>
@@ -51,30 +51,71 @@
             </tbody>
         </table>
 
-        <div class="card">
+        <div class="mb-3" *ngIf="creditCards.length > 0">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-dark shadow-none" type="button" (click)="selectCardDetail(1)">Kayıtlı
+                            Kart
+                            Seç</button>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-warning shadow-none" type="button" (click)="selectCardDetail(0)">Kart
+                            Bilgisi
+                            Gir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" *ngIf="enterCardOrNot">
+            <h5 class="card-header">Kredi Kartı Seç</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg">
+                        <label for="creditCardSelect" class="form-label">Kart Seçiniz</label>
+                        <select id="creditCardSelect" class="form-select">
+                            <option selected>Select a card...</option>
+                            <option *ngFor="let card of creditCards">{{card.cardName}}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-sm-2">
+                        <label for="inputZip" class="form-label">Cvv</label>
+                        <input type="text" class="form-control" id="inputZip">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card" *ngIf="!enterCardOrNot">
             <h5 class="card-header">Kredi Kartı ile Ödeme</h5>
             <div class="card-body">
-                <form class="row g-3">
+                <form class="row g-3" [formGroup]="creditCardForm">
                     <div class="col-md-6">
                         <label for="inputNameOnCard" class="form-label">Kart Üzerindeki İsim</label>
-                        <input type="text" class="form-control" id="inputNameOnCard">
+                        <input type="text" class="form-control" id="inputNameOnCard" formControlName="nameOnCard">
                     </div>
                     <div class="col-md-6">
                         <label for="inputCardNumber" class="form-label">Kart Numarası</label>
-                        <input type="number"
-                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                            type="number" maxlength="16" class="form-control" id="inputCardNumber">
+                        <input
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                            type="text" maxlength="16" class="form-control" id="inputCardNumber"
+                            formControlName="cardNumber">
                     </div>
                     <div class="col-md-5">
                         <label for="selectMonth" class="form-label">Ay</label>
-                        <select id="selectMonth" class="form-select">
+                        <select id="selectMonth" class="form-select" formControlName="cardMonth">
                             <option selected>Ay Seçiniz...</option>
                             <option *ngFor="let month of months" value="{{month}}">{{month}}</option>
                         </select>
                     </div>
                     <div class="col-md-5">
                         <label for="selectYear" class="form-label">Yıl</label>
-                        <select id="selectYear" class="form-select">
+                        <select id="selectYear" class="form-select" formControlName="cardYear">
                             <option selected>Yıl Seçiniz...</option>
                             <option *ngFor="let year of years" value="{{year}}">{{year}}</option>
                         </select>
@@ -83,29 +124,41 @@
                         <label for="inputCVV" class="form-label">CVV</label>
                         <input
                             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                            type="number" maxlength="3" class="form-control" id="inputCVV">
+                            type="text" maxlength="3" class="form-control" id="inputCVV" formControlName="cardCvv">
                     </div>
                     <div class="col-12">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck" disabled>
+                            <input class="form-check-input" type="checkbox" id="gridCheck"
+                                [(ngModel)]="rememberCreditCardCheck" [ngModelOptions]="{standalone: true}">
                             <label class="form-check-label" for="gridCheck">
                                 Kart bilgilerimi hatırla
                             </label>
                         </div>
                     </div>
-                    <div class="col-9">
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-success" type="button" (click)="postPayment()">Ödemeyi
-                                Gerçekleştir</button>
+
+                    <div class="col-md-12" *ngIf="rememberCreditCardCheck">
+                        <div class="row">
+                            <label for="inputNameOnCard" class="form-label col-lg-auto">Kartıza bir isim verin</label>
+                            <input type="text" class="form-control col-lg me-2" id="inputNameOnCard"
+                                formControlName="cardName">
                         </div>
                     </div>
-                    <div class="col-3">
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-warning" type="button" routerLink="/cars"
-                                (click)="removeAllItemsFromCart()">İşlemi İptal Et</button>
-                        </div>
-                    </div>
+
                 </form>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-9">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success" type="button" (click)="postPayment()">Ödemeyi
+                        Gerçekleştir</button>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-danger" type="button" routerLink="/cars"
+                        (click)="removeAllItemsFromCart()">İşlemi İptal Et</button>
+                </div>
             </div>
         </div>
     </div>

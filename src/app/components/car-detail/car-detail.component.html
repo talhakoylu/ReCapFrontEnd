@@ -1,8 +1,67 @@
 <div class="container">
   <div class="row mt-3">
-    <div class="col-sm-3">
-      <app-rent-car></app-rent-car>
+
+    <div class="col-sm-3" *ngIf="isLoggedIn">
+      <section id="rent-area" *ngIf="findeksScoreLoaded">
+        <div id="findeks-score-check" *ngIf="!userFindeksScoreNull">
+          <div class="findeks-score-greater-check" *ngIf="userFindeksPoint.findeksScore >= cars[0].findeksScore">
+            <app-rent-car></app-rent-car>
+          </div>
+          <div class="findeks-score-greater-check" *ngIf="userFindeksPoint.findeksScore < cars[0].findeksScore">
+            <div class="card">
+              <h5 class="card-header">Araç Kirala</h5>
+              <div class="card-body">
+                <div class="alert alert-danger mb-0">
+                  Findeks puanınız <strong>({{userFindeksPoint.findeksScore}})</strong> aracın findeks puanından <strong>({{cars[0].findeksScore}})</strong> düşük
+                  olduğu için bu aracı kiralayamazsınız.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="findeks-score-check" *ngIf="userFindeksScoreNull">
+          <div class="card">
+            <h5 class="card-header">Araç Kirala</h5>
+            <div class="card-body">
+              <p>Findeks puanınız bulunmuyor. Findeks puanı olmadan araç kiralama işlemi gerçekleştirilemez. Puanınızı
+                hesaplatmak için aşağıdaki butona tıklayınız.</p>
+              <div class="d-grid gap-2">
+                <button type="button" class="btn btn-sm btn-primary shadow-none" routerLink="/user/findeks">
+                  Findeks Puanı Hesapla <span class="badge bg-warning rounded-pill">
+                    <fa-icon [icon]="['fas', 'chevron-right']" size="lg"></fa-icon>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <section id="rent-area" *ngIf="!findeksScoreLoaded">
+        <div class="d-flex">
+          <strong>Loading...</strong>
+          <div class="spinner-grow text-info ms-auto" role="status" aria-hidden="true"></div>
+        </div>
+      </section>
+
     </div>
+
+    <div class="col-sm-3" *ngIf="!isLoggedIn">
+      <div class="card">
+        <h5 class="card-header">Araç Kirala</h5>
+        <div class="card-body">
+          <p>Araç kiralayabilmek için öncelikle giriş yapmanız gerekmekte.</p>
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-dark shadow-none" routerLink="/login">
+              Giriş Yap <span class="badge bg-warning rounded-pill">
+                <fa-icon [icon]="['fas', 'chevron-right']" size="lg"></fa-icon>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="col-sm-9">
       <ngb-carousel *ngIf="images">
         <ng-template ngbSlide *ngFor="let image of images">
@@ -32,6 +91,8 @@
               <p class="card-text">{{car.brandName}}</p>
               <h5 class="card-title">Araç Günlük Kirası</h5>
               <p class="card-text">{{car.dailyPrice}}</p>
+              <h5 class="card-title">Findeks Puanı</h5>
+              <p class="card-text">{{car.findeksScore}}</p>
             </div>
           </div>
         </div>

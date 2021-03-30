@@ -5,4 +5,5 @@ export interface CarStandart {
     modelYear: number;
     dailyPrice: number;
     description: string;
+    findeksScore?: number;
 }

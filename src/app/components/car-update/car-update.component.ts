@@ -22,7 +22,7 @@ export class CarUpdateComponent implements OnInit {
   selectedColor: number;
   selectedBrand: number;
   modelYearList: number[] = [];
-  
+
 
   constructor(
     private carService: CarService,
@@ -76,8 +76,10 @@ export class CarUpdateComponent implements OnInit {
       this.carUpdateForm.get('dailyPrice')?.setValue(this.car.dailyPrice);
       this.carUpdateForm.get('description')?.setValue(this.car.description);
       this.carUpdateForm.get('modelYear')?.setValue(this.car.modelYear);
+      this.carUpdateForm.get('findeksScore')?.setValue(this.car.findeksScore);
     });
   }
+  get carFormControls() { return this.carUpdateForm.controls; }
 
   createUpdateForm() {
     this.carUpdateForm = this.formBuilder.group({
@@ -86,7 +88,8 @@ export class CarUpdateComponent implements OnInit {
       brandId: ["", Validators.required],
       modelYear: ["", Validators.required],
       dailyPrice: ["", Validators.required],
-      description: ["", Validators.required]
+      description: ["", Validators.required],
+      findeksScore: ["", Validators.required]
     });
   }
 
