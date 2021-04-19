@@ -6,6 +6,7 @@
 <a href="https://www.twitter.com/talhakoylu/">
     <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
 </a>
+<a href="mailto:ahmettalha.koylu@gmail.com"><img src="https://img.shields.io/badge/gmail-%23DD0031.svg?&style=for-the-badge&logo=gmail&logoColor=white"/></a>
 
 <p align="center"><img src="https://i.imgur.com/S7YH4eA.png" width = 500px ></p>
 
@@ -213,4 +214,4 @@ Service and components are binding in files from these folders. In addition, the
 This project licenced and distributed under MIT Licence. Please read the <a href="https://github.com/talhakoylu/ReCapFrontEnd/blob/master/LICENSE">LICENCE</a> file for more information.
 
 ## Author
-Ahmet Talha KÖYLÜ - <a href="https://github.com/talhakoylu/">Github</a> - <a href="https://linkedin.com/in/talhakoylu">LinkedIn</a>
+Ahmet Talha KÖYLÜ - <a href="https://github.com/talhakoylu/">Github</a> - <a href="https://linkedin.com/in/talhakoylu">LinkedIn</a> - <a href="mailto:ahmettalha.koylu@gmail.com">Email</a>
